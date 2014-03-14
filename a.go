@@ -28,7 +28,16 @@ type Response struct {
 
 func main() {
 
-  subreddit := os.Args[1]
+  var subreddit string
+
+  if(len(os.Args) >= 2) {
+    subreddit = os.Args[1]
+  } else {
+    fmt.Println("Usage:")
+    message := fmt.Sprintf("%s [subreddit] [after]", os.Args[0])
+    fmt.Println(message)
+    return
+  }
 
   str := fmt.Sprintf("http://reddit.com/r/%s.json?count=20", subreddit)
 
